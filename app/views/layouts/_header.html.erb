@@ -6,7 +6,7 @@
           <%= link_to "Главная", root_path, class: "nav-link" %>
         </li>
       </ul>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ms-auto">
         <% if current_user %>
           <li class="nav-item"> <%= link_to "Настройки", edit_user_registration_path, class: "nav-link" %></li>
           <li class="nav-item"> <%= button_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
