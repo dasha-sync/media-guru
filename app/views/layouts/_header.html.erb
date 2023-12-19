@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to "KinoGuru", root_path, class: "navbar-brand home-link left-margin" %>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if current_user %>
+          <li class="nav-item"> <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
+        <% else %>
+          <li class="nav-item"> <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"> <%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
