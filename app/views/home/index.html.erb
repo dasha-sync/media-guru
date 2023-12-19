@@ -1,0 +1,5 @@
+<% if current_user %>
+  <%= render partial: 'authorized_greeting' %>
+<% else %>
+  <%= render partial: 'greeting' %>
+<% end %>

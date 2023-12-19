@@ -49,11 +49,20 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+
+# Validations for Active Storage (presence) [https://github.com/igorkasyanchuk/active_storage_validations]
+gem 'active_storage_validations'
+
+# Devise is a flexible authentication solution for Rails based on Warden. [https://github.com/heartcombo/devise]
+gem "devise"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities. [https://github.com/pry/pry]
+  gem 'pry', '~> 0.14.2'
 end
 
 group :development do
@@ -65,5 +74,16 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # A Ruby gem to load environment variables from `.env` [https://github.com/bkeepers/dotenv]
+  gem 'dotenv-rails'
+end
+
+group :test do
+  # Selenium implements the W3C WebDriver protocol to automate popular browsers. [https://github.com/SeleniumHQ/selenium/wiki/Ruby-Bindings]
+  gem "selenium-webdriver"
+
+  # Run Selenium tests more easily with automatic installation and updates for all supported webdrivers. [https://github.com/titusfortner/webdrivers]
+  gem "webdrivers"
 end
 
