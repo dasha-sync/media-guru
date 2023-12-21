@@ -1,8 +1,14 @@
 <div class="container secondary">
-    <div class="alert alert-success" role="alert">
-        <h3>Привет!</h3>
-        <hr>
+  <div class="alert alert-success" role="alert">
+    <h3>Привет!</h3>
+    <hr>
+    <% if current_user&.admin? %>
+        <p class="text-shadow">Добро пожаловать в административный аккаунт KinoGuru.<br>Всего зарегистрированно <%= User.count %> пользователей.</p>
+    <% else %>
         <p class="text-shadow">Добро пожаловать в KinoGuru.</p>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <% end %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
   </div>
+</div>
+

@@ -6,10 +6,18 @@
     width: 100%;
 }
 
+.list-button {
+    width: 70%
+}
+
 .form-check-input {
     border-radius: 4px !important;
     -webkit-border-radius: 4px !important;
     -moz-border-radius: 4px !important;
     -ms-border-radius: 4px !important;
     -o-border-radius: 4px !important;
+}
+
+.devise-butt {
+    padding-right: 1% !important;
 }
