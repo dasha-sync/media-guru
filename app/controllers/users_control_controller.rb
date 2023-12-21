@@ -6,15 +6,15 @@ class UsersControlController < ApplicationController
   def destroy
     @user = User.find(params[:id])
 
-    if @user.role.zero?
+    if @user.role == 'user'
       if @user.destroy
         redirect_to '/users_control/index', notice: 'Пользователь успешно удален.'
       else
-        redirect_to '/users_control/index', warning: 'Не удалось удалить пользователя.'
+        redirect_to '/users_control/index', :flash => { :error => 'Не удалось удалить пользователя.' }
       end
     else
       redirect_to '/users_control/index',
-                  warning: 'Административный аккаунт можно удалить только через настройки этого аккаунта.'
+      :flash => { :error => 'Административный аккаунт можно удалить только через настройки этого аккаунта.' }
     end
   end
 end
