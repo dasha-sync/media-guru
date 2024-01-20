@@ -1,18 +1,40 @@
-<div class="border">
-    <div class="container mb-4", style="height: 900px">
+<div class="border rounded">
+  <div class="container mb-4">
     <br>
       <h1>Каталог</h1><br>
-      <br>
+      <% if current_user&.admin? %>
+        <p class="nav-item active">
+          <%= link_to 'Добавить фильм', new_film_path, class: "btn btn-success text-white" %>
+        </p>
+      <% end %>
       <% if @films.empty? %>
         <h2 class="text-center p-4">Нет фильмов</h2>
       <% else %>
-        <table class="table table-hover" style="width:700px !important; margin-left:">
-          <% @films.each_with_index do |event, index| %>
-            <tr  %>
-              <td class="bg-transparent"> <%= event.id %></td>
-              <td class="bg-transparent"><%= event.film_name %></td>
-            </tr>
-          <% end %>
-        </table>
+        <% @films.each_with_index do |film, index| %>
+          <div class="card">
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td class="table-pic" onclick="location.href='<%= film_path(film.id) %>'">
+                    <% if film.picture_url %>
+                      <%= image_tag film.picture_url.url, height: '150', width: '255', class: "rounded float-left" || :no_picture %>
+                    <% end %>
+                  </td>
+                  <td class="table-text"  onclick="location.href='<%= film_path(film.id) %>'"><%= film.film_name %></td>
+                  <% if current_user&.admin? %>
+                    <td class='table-button'>
+                      <%= link_to "Изменить", edit_film_path(film.id), class: "btn btn-outline-danger" %>
+                    </td>
+                    <td class='table-button'>
+                      <%= button_to "Удалить", film_path(film.id), method: :delete, class: "btn btn-danger" %>
+                    </td>
+                  <% end %>
+                </tr>
+              </table>
+            </div>
+          </div>
+        <% end %>
       <% end %>
   </div>
+</div>
+

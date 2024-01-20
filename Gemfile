@@ -51,7 +51,7 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem 'image_processing', '~> 1.2'
+gem 'image_processing'
 
 # Validations for Active Storage (presence) [https://github.com/igorkasyanchuk/active_storage_validations]
 gem 'active_storage_validations'
@@ -59,12 +59,15 @@ gem 'active_storage_validations'
 # Devise is a flexible authentication solution for Rails based on Warden. [https://github.com/heartcombo/devise]
 gem 'devise'
 
+# Provides a simple and flexible way to upload files from Ruby applications. [https://github.com/carrierwaveuploader/carrierwave]
+gem 'carrierwave'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities. [https://github.com/pry/pry]
-  gem 'pry', '~> 0.14.2'
+  gem 'pry'
 
   # It's a library for generating fake data such as names, addresses, and phone numbers. [https://github.com/faker-ruby/faker]
   gem 'faker'

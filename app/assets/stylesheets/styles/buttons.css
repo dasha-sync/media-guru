@@ -21,3 +21,9 @@
 .devise-butt {
     padding-right: 1% !important;
 }
+
+.table-button {
+    text-align: right;
+    vertical-align: top;
+    width: 8%;
+}
