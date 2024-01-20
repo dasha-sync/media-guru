@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Film < ApplicationRecord
+  has_many :film_countries, dependent: :destroy
+  has_many :film_directors, dependent: :destroy
+  has_many :film_screenwriters, dependent: :destroy
+  has_many :film_speakers, dependent: :destroy
+
   mount_uploader :picture_url, PictureUrlUploader
 
   validates :film_name, presence: true
