@@ -5,12 +5,12 @@
 <%= render partial: 'films/error', locals: { film: film, attribute: :name} %>
 
 <div class="field">
-    <%= f.datetime_field :release_date, class: "form-control", placeholder: 'Описание' %>
+    <%= f.datetime_field :release_date, class: "form-control", placeholder: 'Дата релиза' %>
 </div>
 <%= render partial: 'films/error', locals: { film: film, attribute: :release_date} %>
 
 <div class="field">
-    <%= f.text_area :film_description, rows: 10, class: "form-control", placeholder: 'Дата релиза' %>
+    <%= f.text_area :film_description, rows: 10, class: "form-control", placeholder: 'Описание' %>
 </div>
 <%= render partial: 'films/error', locals: { film: film, attribute: :film_description} %>
 

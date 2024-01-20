@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_124710) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_205644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,51 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_124710) do
     t.string "director_fio", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "film_countries", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_film_countries_on_country_id"
+    t.index ["film_id"], name: "index_film_countries_on_film_id"
+  end
+
+  create_table "film_directors", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.bigint "director_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["director_id"], name: "index_film_directors_on_director_id"
+    t.index ["film_id"], name: "index_film_directors_on_film_id"
+  end
+
+  create_table "film_genres", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_film_genres_on_film_id"
+    t.index ["genre_id"], name: "index_film_genres_on_genre_id"
+  end
+
+  create_table "film_screenwriters", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.bigint "screenwriter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_film_screenwriters_on_film_id"
+    t.index ["screenwriter_id"], name: "index_film_screenwriters_on_screenwriter_id"
+  end
+
+  create_table "film_speakers", force: :cascade do |t|
+    t.bigint "film_id", null: false
+    t.bigint "speaker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_film_speakers_on_film_id"
+    t.index ["speaker_id"], name: "index_film_speakers_on_speaker_id"
   end
 
   create_table "films", force: :cascade do |t|
@@ -68,4 +113,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_124710) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "film_countries", "countries"
+  add_foreign_key "film_countries", "films"
+  add_foreign_key "film_directors", "directors"
+  add_foreign_key "film_directors", "films"
+  add_foreign_key "film_genres", "films"
+  add_foreign_key "film_genres", "genres"
+  add_foreign_key "film_screenwriters", "films"
+  add_foreign_key "film_screenwriters", "screenwriters"
+  add_foreign_key "film_speakers", "films"
+  add_foreign_key "film_speakers", "speakers"
 end
