@@ -10,16 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_21_141704) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_124710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "countries", force: :cascade do |t|
+    t.string "country_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.string "director_fio", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "films", force: :cascade do |t|
     t.string "film_name", null: false
-    t.text "film_description"
-    t.date "release_date"
+    t.text "film_description", null: false
+    t.date "release_date", null: false
     t.string "film_link"
-    t.string "image_link"
+    t.string "picture_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "screenwriters", force: :cascade do |t|
+    t.string "screenwriter_fio", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "speakers", force: :cascade do |t|
+    t.string "speaker_fio", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -57,11 +57,40 @@
 }
 
 table {
-    position: relative !important;
-    width: 70% !important;
-    left: 15% !important;
+    width: 100% !important;
+    background-color: transparent !important;
+    ;
 }
 
 .container-fluid {
     min-height: 530px !important;
+}
+
+.table-pic {
+    width: 0%;
+}
+
+.table-text {
+    padding-left: 10px;
+    padding-top: 10px;
+    vertical-align: top;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    box-shadow: var(--bs-box-shadow) !important;
+}
+
+.form {
+    width: 50%;
+    margin-left: 25% !important;
+    margin-right: 20% !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    margin-bottom: 10px;
 }
