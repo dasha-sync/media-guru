@@ -10,8 +10,8 @@
       <% if @films.empty? %>
         <h2 class="text-center p-4">Нет фильмов</h2>
       <% else %>
-        <% @films.each_with_index do |film, index| %>
-          <div class="card">
+        <% @films.reverse.each_with_index do |film, index| %>
+          <div class="card card-film">
             <div class="card-body">
               <table>
                 <tr>

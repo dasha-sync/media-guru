@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users_control
-  resources :films
+
+  resources :films do
+    resources :reviews
+  end
 end

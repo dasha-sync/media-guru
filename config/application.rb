@@ -42,5 +42,9 @@ module KinoGuru
         system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
       end
     end
+
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
+
+    config.assets.enabled = true
   end
 end

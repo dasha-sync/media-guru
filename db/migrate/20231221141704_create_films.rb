@@ -6,8 +6,8 @@ class CreateFilms < ActiveRecord::Migration[7.0]
       t.string :film_name, null: false
       t.text :film_description, null: false
       t.date :release_date, null: false
-      t.string :film_link
-      t.string :picture_url
+      t.string :film_url, null: false
+      t.string :picture_url, null: false
 
       t.timestamps
     end

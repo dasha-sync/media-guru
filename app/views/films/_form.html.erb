@@ -15,9 +15,16 @@
 <%= render partial: 'films/error', locals: { film: film, attribute: :film_description} %>
 
 <div class="field">
+    <%= f.label "Выберите картинку" %>
     <%= f.file_field :picture_url, class: "form-control", placeholder: 'Картинка' %>
 </div>
 <%= render partial: 'films/error', locals: { film: film, attribute: :picture_url} %>
+
+<div class="field">
+    <%= f.label "Выберите фильм" %>
+    <%= f.file_field :film_url, class: "form-control", placeholder: 'Фильм' %>
+</div>
+<%= render partial: 'films/error', locals: { film: film, attribute: :film_url} %>
 
 <p>
     <%= f.submit button, class: "btn btn-primary" %>

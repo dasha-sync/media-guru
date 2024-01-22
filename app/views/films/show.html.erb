@@ -1,0 +1,47 @@
+<div class="container-films">
+  <div class="border rounded show-film item">
+    <div class="container mb-4">
+      <br>
+      <h4><%= @film.film_name %></h4>
+      <%= video_tag @film.film_url.to_s, controls: true, class: "film rounded" %>
+    </div>
+  </div>
+  <div class="border rounded show-info-film item">
+    <div class="container mb-4 ">
+      <br>
+      <h6>Дата релиза</h6>
+      <%= @film.release_date %>
+      <br><br>
+      <h6>Описание</h6>
+      <label><%=  simple_format(@film.film_description) %></label>
+      <br>
+    </div>
+  </div>
+
+</div>
+<div class="border rounded show-recensions">
+  <div class="container mb-4">
+    <br>
+    <h2>Рецензии</h2>
+    <%= render 'reviews/form', review: @review %>
+
+    <% @reviews.reverse.each do |review| %>
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <strong>:</strong> <%= review.user.username %>
+            <small><small>(<%= review.created_at.strftime('%d %b %y %H:%M') %>)</small></small>
+            <br>
+            <%= simple_format(review.text) %>
+            <% if review.user == current_user %>
+              <div class="container-review">
+                  <%= link_to "Изменить", edit_film_review_path(review.film_id, review.id), class: "btn btn-outline-danger btn-sm" %>
+                  <%= button_to "Удалить", film_review_path(review.film_id, review.id), method: :delete, class: "btn btn-danger btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

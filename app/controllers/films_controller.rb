@@ -1,15 +1,22 @@
 # frozen_string_literal: true
 
 class FilmsController < ApplicationController
-  before_action :set_film, only: %i[edit update destroy]
+  before_action :set_film, only: %i[edit show update destroy]
 
   def index
     @films = Film.all
   end
 
+  def show
+    @reviews = @film.reviews
+    @review = Review.new
+  end
+
   def new
     @film = Film.new
   end
+
+  def edit; end
 
   def create
     @film = Film.new(film_params)
@@ -23,15 +30,11 @@ class FilmsController < ApplicationController
 
   def update
     if @film.update(film_params)
-      redirect_to films_path(@film), notice: 'FФильм успешно обновлен'
+      redirect_to films_path(@film), notice: 'Фильм успешно обновлен.'
     else
       render :edit, status: :unprocessable_entity, error: 'Фильм не может быть обновлен по какой-то причине.'
     end
   end
-
-  def edit; end
-
-  def show; end
 
   def destroy
     if @film.destroy
@@ -44,10 +47,10 @@ class FilmsController < ApplicationController
   private
 
   def set_film
-    @film = Film.all.find(params[:id])
+    @film = Film.find(params[:id])
   end
 
   def film_params
-    params.require(:film).permit(:film_name, :film_description, :release_date, :film_link, :picture_url)
+    params.require(:film).permit(:film_name, :film_description, :release_date, :picture_url, :film_url)
   end
 end
