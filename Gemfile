@@ -61,6 +61,7 @@ gem 'devise'
 
 # Provides a simple and flexible way to upload files from Ruby applications. [https://github.com/carrierwaveuploader/carrierwave]
 gem 'carrierwave'
+gem 'carrierwave-video'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

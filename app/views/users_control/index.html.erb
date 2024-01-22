@@ -1,20 +1,26 @@
-<% if current_user&.admin? %>
-  <table class="table table-hover">
-    <tr>
-      <th class="bg-transparent">#</th>
-      <th class="bg-transparent">Имя пользователя</th>
-      <th class="bg-transparent">Электронная почта</th>
-      <th class="bg-transparent">Роль</th>
-      <th class="bg-transparent"></th>
-    </tr>
-    <% User.all.each_with_index do |user, index| %>
-      <tr>
-        <td class="bg-transparent"> <%= user.id %></td>
-        <td class="bg-transparent"><%= user.username %></td>
-        <td class="bg-transparent"><%= user.email %></td>
-        <td class="bg-transparent"><%= user.role %></td>
-        <td class="bg-transparent text-end"> <%= button_to "Удалить аккаунт", users_control_path(user.id), method: :delete, data: { confirm: "Вы уверены что хотите удалить аккаунт?", turbo_confirm: "Вы уверены что хотите удалить аккаунт?" }, class: "btn btn-danger list-button" %></td>
-      </tr>
+<div class="border rounded">
+  <div class="container mb-4">
+    <br>
+    <h1>Пользователи</h1><br>
+    <% if current_user&.admin? %>
+      <table class="table table-hover">
+        <tr>
+          <th class="bg-transparent">#</th>
+          <th class="bg-transparent">Имя пользователя</th>
+          <th class="bg-transparent">Электронная почта</th>
+          <th class="bg-transparent">Роль</th>
+          <th class="bg-transparent"></th>
+        </tr>
+        <% User.all.each_with_index do |user, index| %>
+          <tr>
+            <td class="bg-transparent"> <%= user.id %></td>
+            <td class="bg-transparent"><%= user.username %></td>
+            <td class="bg-transparent"><%= user.email %></td>
+            <td class="bg-transparent"><%= user.role %></td>
+            <td class="bg-transparent text-end"> <%= button_to "Удалить аккаунт", users_control_path(user.id), method: :delete, data: { confirm: "Вы уверены что хотите удалить аккаунт?", turbo_confirm: "Вы уверены что хотите удалить аккаунт?" }, class: "btn btn-danger list-button" %></td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
-  </table>
-<% end %>
+  </div>
+</div>
