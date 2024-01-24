@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
   def show; end
 
   def new
-    @reviews = @film.reviews
     @review = Review.new
   end
 
@@ -26,7 +25,6 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to film_path(@film), notice: 'Рецензия успешно добавлена.'
     else
-      @reviews = @film.reviews
       render :new, status: :unprocessable_entity, error: 'Рецензия не может быть добавлена по какой-то причине.'
     end
   end

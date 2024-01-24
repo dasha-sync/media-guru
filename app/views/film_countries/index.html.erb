@@ -1,0 +1,18 @@
+<% if @film.film_countries.present? %>
+    <div class="card">
+        <div class="card-header">
+            Страны
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @film.film_countries.each do |film_country| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'film_countries/admin_index', locals: { film_country: film_country } %>
+                    <% else %>
+                        <%= render partial: 'film_countries/user_index', locals: { film_country: film_country } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>

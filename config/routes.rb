@@ -14,5 +14,10 @@ Rails.application.routes.draw do
 
   resources :films do
     resources :reviews
+    resources :film_screenwriters
+    resources :film_directors
+    resources :film_speakers
+    resources :film_countries
+    resources :film_genres
   end
 end

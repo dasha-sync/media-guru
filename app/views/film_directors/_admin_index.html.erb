@@ -1,0 +1,6 @@
+<span class="badge bg-secondary admin-span">
+    <div class="container-line">
+        <div class="badge-text"><%= film_director.director.director_fio %></div>
+        <%= button_to "×", film_film_director_path(@film.id, film_director.id), method: :delete, class: "delete-span" %>
+    </div>
+</span>

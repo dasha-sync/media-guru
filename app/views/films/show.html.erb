@@ -10,9 +10,34 @@
     <div class="container mb-4 ">
       <br>
       <h6>Дата релиза</h6>
-      <%= @film.release_date %>
-      <br><br>
-      <h6>Описание</h6>
+      <p><%= @film.id %>
+      <%= @film.release_date %></p>
+
+      <% if current_user&.admin? %>
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Добавить категории</button>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Добавить страну', new_film_film_country_path(@film), {remote: true, 'data-toggle': :modal, 'data-target': '#modal-window', class: 'dropdown-item'} %></li>
+            <li><%= link_to 'Добавить жанр', new_film_film_genre_path(@film), class: "dropdown-item" %></li>
+            <li><%= link_to 'Добавить спикера', new_film_film_speaker_path(@film), class: "dropdown-item" %></li>
+            <li><%= link_to 'Добавить режиссера', new_film_film_director_path(@film), class: "dropdown-item" %></li>
+            <li><%= link_to 'Добавить сценариста', new_film_film_screenwriter_path(@film), class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+
+      <%= render template: "film_countries/index", film: @film %>
+      <%= render template: "film_genres/index", film: @film %>
+      <%= render template: "film_speakers/index", film: @film %>
+      <%= render template: "film_directors/index", film: @film %>
+      <%= render template: "film_screenwriters/index", film: @film %>
+      <br><h6>Описание</h6>
       <label><%=  simple_format(@film.film_description) %></label>
       <br>
     </div>
