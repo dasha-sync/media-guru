@@ -59,6 +59,13 @@ gem 'active_storage_validations'
 # Devise is a flexible authentication solution for Rails based on Warden. [https://github.com/heartcombo/devise]
 gem 'devise'
 
+# This gem provides popper.js assets as a Ruby gem. [https://github.com/glebm/popper_js-rubygem]
+gem 'popper_js'
+
+gem 'bootstrap'
+
+gem 'jquery-rails'
+
 # Provides a simple and flexible way to upload files from Ruby applications. [https://github.com/carrierwaveuploader/carrierwave]
 gem 'carrierwave'
 gem 'carrierwave-video'

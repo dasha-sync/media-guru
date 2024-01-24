@@ -35,3 +35,56 @@
 .btn-sm {
     margin-left: 10px;
 }
+
+.delete-span {
+    background-color: transparent;
+    color: white;
+    border-color: white !important;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-left: 2px;
+    height: 21px;
+    width: 22px;
+    padding: 0;
+    padding-bottom: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.admin-span {
+    padding-right: 4px !important;
+    vertical-align: text-top !important;
+    font-size: 15px !important;
+    line-height: 0.05 !important;
+}
+
+.delete-span:hover {
+    background-color: white;
+    color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity));
+}
+
+.delete-span:active {
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity));
+    color: white;
+}
+
+.badge {
+    margin-bottom: 5px;
+}
+
+.container-line {
+    display: flex;
+}
+
+.badge-text {
+    margin-top: 10px;
+    margin-right: 3px;
+}
+
+.dropdown-toggle {
+    margin-left: 0;
+}

@@ -1,0 +1,18 @@
+<% if @film.film_genres.present? %>
+    <div class="card">
+        <div class="card-header">
+            Жары
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @film.film_genres.each do |film_genre| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'film_genres/admin_index', locals: { film_genre: film_genre } %>
+                    <% else %>
+                        <%= render partial: 'film_genres/user_index', locals: { film_genre: film_genre } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>

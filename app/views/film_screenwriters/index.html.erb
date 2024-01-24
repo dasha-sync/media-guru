@@ -1,0 +1,18 @@
+<% if @film.film_screenwriters.present? %>
+    <div class="card">
+        <div class="card-header">
+            Сценаристы
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @film.film_screenwriters.each do |film_screenwriter| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'film_screenwriters/admin_index', locals: { film_screenwriter: film_screenwriter } %>
+                    <% else %>
+                        <%= render partial: 'film_screenwriters/user_index', locals: { film_screenwriter: film_screenwriter } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>
