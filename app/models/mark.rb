@@ -2,7 +2,7 @@
 
 class Mark < ApplicationRecord
   belongs_to :user
-  belongs_to :film
+  belongs_to :video
 
   validates :digit, presence: true
 end

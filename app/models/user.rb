@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
-  has_many :marks, dependent: :nullify
+  has_many :marks
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

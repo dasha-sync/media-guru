@@ -1,0 +1,6 @@
+<span class="badge bg-secondary admin-span">
+    <div class="container-line">
+        <div class="badge-text"><%= video_genre.genre.genre_name  %></div>
+        <%= button_to "×", video_video_genre_path(@video.id, video_genre.id), method: :delete, class: "delete-span" %>
+    </div>
+</span>

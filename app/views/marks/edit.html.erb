@@ -2,7 +2,7 @@
     <div class="container mb-4">
       <br>
       <h1>Изменение</h1><br>
-      <%= form_for([@film, @review]) do |f| %>
+      <%= form_for([@video, @review]) do |f| %>
         <!-- Your form fields for the review -->
         <div class="field">
             <%= f.text_area :text, rows: 10, class: "form-control", placeholder: 'Написать рецензию' %>

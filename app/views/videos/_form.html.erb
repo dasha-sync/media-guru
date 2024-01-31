@@ -1,0 +1,32 @@
+<%= form_with model: @video do |f| %>
+<div class="field">
+    <%= f.text_field :video_name, class: "form-control", placeholder: 'Название' %>
+</div>
+<%= render partial: 'videos/error', locals: { video: video, attribute: :name} %>
+
+<div class="field">
+    <%= f.datetime_field :release_date, class: "form-control", placeholder: 'Дата релиза' %>
+</div>
+<%= render partial: 'videos/error', locals: { video: video, attribute: :release_date} %>
+
+<div class="field">
+    <%= f.text_area :video_description, rows: 10, class: "form-control", placeholder: 'Описание' %>
+</div>
+<%= render partial: 'videos/error', locals: { video: video, attribute: :video_description} %>
+
+<div class="field">
+    <%= f.label "Выберите картинку" %>
+    <%= f.file_field :picture_url, class: "form-control", placeholder: 'Картинка' %>
+</div>
+<%= render partial: 'videos/error', locals: { video: video, attribute: :picture_url} %>
+
+<div class="field">
+    <%= f.label "Выберите фильм" %>
+    <%= f.file_field :video_url, class: "form-control", placeholder: 'Фильм' %>
+</div>
+<%= render partial: 'videos/error', locals: { video: video, attribute: :video_url} %>
+
+<p>
+    <%= f.submit button, class: "btn btn-primary" %>
+</p>
+<% end %>

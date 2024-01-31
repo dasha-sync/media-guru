@@ -26,61 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "film_countries", force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "country_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_film_countries_on_country_id"
-    t.index ["film_id"], name: "index_film_countries_on_film_id"
-  end
-
-  create_table "film_directors", force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "director_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["director_id"], name: "index_film_directors_on_director_id"
-    t.index ["film_id"], name: "index_film_directors_on_film_id"
-  end
-
-  create_table "film_genres", force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_film_genres_on_film_id"
-    t.index ["genre_id"], name: "index_film_genres_on_genre_id"
-  end
-
-  create_table "film_screenwriters", force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "screenwriter_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_film_screenwriters_on_film_id"
-    t.index ["screenwriter_id"], name: "index_film_screenwriters_on_screenwriter_id"
-  end
-
-  create_table "film_speakers", force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "speaker_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_film_speakers_on_film_id"
-    t.index ["speaker_id"], name: "index_film_speakers_on_speaker_id"
-  end
-
-  create_table "films", force: :cascade do |t|
-    t.string "film_name", null: false
-    t.text "film_description", null: false
-    t.date "release_date", null: false
-    t.string "film_url", null: false
-    t.string "picture_url", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "genre_name", null: false
     t.datetime "created_at", null: false
@@ -90,11 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
   create_table "reviews", force: :cascade do |t|
     t.text "text"
     t.bigint "user_id", null: false
-    t.bigint "film_id", null: false
+    t.bigint "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_reviews_on_film_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["video_id"], name: "index_reviews_on_video_id"
   end
 
   create_table "screenwriters", force: :cascade do |t|
@@ -123,16 +68,71 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "film_countries", "countries"
-  add_foreign_key "film_countries", "films"
-  add_foreign_key "film_directors", "directors"
-  add_foreign_key "film_directors", "films"
-  add_foreign_key "film_genres", "films"
-  add_foreign_key "film_genres", "genres"
-  add_foreign_key "film_screenwriters", "films"
-  add_foreign_key "film_screenwriters", "screenwriters"
-  add_foreign_key "film_speakers", "films"
-  add_foreign_key "film_speakers", "speakers"
-  add_foreign_key "reviews", "films"
+  create_table "video_countries", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_video_countries_on_country_id"
+    t.index ["video_id"], name: "index_video_countries_on_video_id"
+  end
+
+  create_table "video_directors", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "director_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["director_id"], name: "index_video_directors_on_director_id"
+    t.index ["video_id"], name: "index_video_directors_on_video_id"
+  end
+
+  create_table "video_genres", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_video_genres_on_genre_id"
+    t.index ["video_id"], name: "index_video_genres_on_video_id"
+  end
+
+  create_table "video_screenwriters", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "screenwriter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["screenwriter_id"], name: "index_video_screenwriters_on_screenwriter_id"
+    t.index ["video_id"], name: "index_video_screenwriters_on_video_id"
+  end
+
+  create_table "video_speakers", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "speaker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["speaker_id"], name: "index_video_speakers_on_speaker_id"
+    t.index ["video_id"], name: "index_video_speakers_on_video_id"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "video_name", null: false
+    t.text "video_description", null: false
+    t.date "release_date", null: false
+    t.string "video_url", null: false
+    t.string "picture_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "videos"
+  add_foreign_key "video_countries", "countries"
+  add_foreign_key "video_countries", "videos"
+  add_foreign_key "video_directors", "directors"
+  add_foreign_key "video_directors", "videos"
+  add_foreign_key "video_genres", "genres"
+  add_foreign_key "video_genres", "videos"
+  add_foreign_key "video_screenwriters", "screenwriters"
+  add_foreign_key "video_screenwriters", "videos"
+  add_foreign_key "video_speakers", "speakers"
+  add_foreign_key "video_speakers", "videos"
 end

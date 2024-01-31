@@ -1,0 +1,18 @@
+<% if @video.video_genres.present? %>
+    <div class="card">
+        <div class="card-header">
+            Жары
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @video.video_genres.each do |video_genre| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'video_genres/admin_index', locals: { video_genre: video_genre } %>
+                    <% else %>
+                        <%= render partial: 'video_genres/user_index', locals: { video_genre: video_genre } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>
