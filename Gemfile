@@ -66,6 +66,8 @@ gem 'bootstrap'
 
 gem 'jquery-rails'
 
+gem "responders"
+
 # Provides a simple and flexible way to upload files from Ruby applications. [https://github.com/carrierwaveuploader/carrierwave]
 gem 'carrierwave'
 gem 'carrierwave-video'

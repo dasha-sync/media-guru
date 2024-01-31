@@ -1,2 +1,13 @@
-<h1>FilmSpeakers#new</h1>
-<p>Find me in app/views/film_speakers/new.html.erb</p>
+<%= form_for [@film, FilmSpeaker.new] do |form| %>
+  <div class="modal-content modal-pose">
+      <%= form.submit "Готово", class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      <h5>
+        <div class="container-assotiation">
+            <% Speaker.all.each do |speaker| %>
+                <%= link_to speaker.speaker_fio, "/", class: "btn btn-sm btn-outline-secondary" %>
+            <% end %>
+        </div>
+      </h5>
+  </div>
+<% end %>

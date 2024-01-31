@@ -88,3 +88,12 @@
 .dropdown-toggle {
     margin-left: 0;
 }
+
+.btn-outline-secondary:after {
+    background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity));
+    color: white;
+}
+
+.dropdown-toggle {
+    font-size: 14.5px;
+}

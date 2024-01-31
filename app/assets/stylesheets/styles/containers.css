@@ -153,3 +153,17 @@ table {
     flex-direction: row;
     justify-content: flex-end;
 }
+
+.modal-content {
+    width: 100%;
+}
+
+.modal-pose {
+    padding: 5px;
+}
+
+.container-assotiation {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}

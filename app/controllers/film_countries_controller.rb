@@ -17,12 +17,11 @@ class FilmCountriesController < ApplicationController
   def create
     @film_country = @film.film_countries.new(film_country_params)
 
-    @film_country.country = Countries.find(params[:country_id])
-
     if @film_country.save
-      flash.now[:notice] = "Страна успешно добавлена."
+      redirect_to film_path(@film), notice: 'Страна успешно добавлена.'
     else
-      flash.now[:error] = "Страна не может быть добавлена по какой-то причине."
+      flash.now[:alert] = 'Страна не может быть добавлена по какой-то причине.'
+      render :new
     end
   end
 
@@ -30,7 +29,8 @@ class FilmCountriesController < ApplicationController
     if @film_country.destroy
       redirect_to film_path(@film), notice: 'Страна успешно удалена.'
     else
-      redirect_to film_path(@film), error: 'Страна не может быть удалена по какой-то причине.'
+      flash.now[:alert] = 'Страна не может быть удалена по какой-то причине.'
+      render :show
     end
   end
 
@@ -41,7 +41,7 @@ class FilmCountriesController < ApplicationController
   end
 
   def film_country_params
-    params.require(:film_country).permit()
+    params.require(:film_country).permit(:country)
   end
 
   def set_film

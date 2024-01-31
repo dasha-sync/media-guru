@@ -1,2 +1,13 @@
-<h1>FilmScreenwriters#new</h1>
-<p>Find me in app/views/film_screenwriters/new.html.erb</p>
+<%= form_for [@film, FilmScreenwriter.new] do |form| %>
+  <div class="modal-content modal-pose">
+      <%= form.submit "Готово", class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      <h5>
+        <div class="container-assotiation">
+        <% Screenwriter.all.each do |screenwriter| %>
+          <%= link_to screenwriter.screenwriter_fio, "/", class: "btn btn-sm btn-outline-secondary" %>
+        <% end %>
+        </div>
+      </h5>
+  </div>
+<% end %>

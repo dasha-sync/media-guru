@@ -1,10 +1,14 @@
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">x</button>
-    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+<%= form_for [@film, @film_country], method: :new do |form| %>
+  <div class="modal-content modal-pose container-assotiation">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      <h5>
+        <div class="container-assotiation">
+          <% Country.all.each do |country| %>
+            <%= form.hidden_field_tag :country,  value: country %>
+            <%= form.submit country.country_name, class: "btn btn-sm btn-outline-secondary" %>
+          <% end %>
+      <%= form.submit "Готово", class: 'btn btn-primary' %>
+        </div>
+      </h5>
   </div>
-  <div class="modal-body">
-    *Modal content comes here*
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary">Save</button>
-  </div>
+<% end %>
