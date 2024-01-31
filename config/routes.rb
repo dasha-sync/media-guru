@@ -25,5 +25,10 @@ Rails.application.routes.draw do
 
   resources :videos do
     resources :video_countries
+    resources :video_directors
+    resources :video_genres
+    resources :video_speakers
+    resources :video_screenwriters
+    resources :marks
   end
 end
