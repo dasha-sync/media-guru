@@ -7,6 +7,7 @@ class Film < ApplicationRecord
   has_many :film_speakers, dependent: :destroy
   has_many :film_genres, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :marks, dependent: :nullify
 
   mount_uploader :picture_url, PictureUrlUploader
   mount_uploader :film_url, FilmUrlUploader

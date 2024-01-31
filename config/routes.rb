@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'marks/index'
+  get 'marks/show'
+  get 'marks/new'
+  get 'marks/create'
+  get 'marks/edit'
+  get 'marks/update'
+  get 'marks/destroy'
   get 'films/index'
   get 'users_control/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,10 +21,9 @@ Rails.application.routes.draw do
 
   resources :films do
     resources :reviews
-    resources :film_screenwriters
-    resources :film_directors
-    resources :film_speakers
+  end
+
+  resources :films do
     resources :film_countries
-    resources :film_genres
   end
 end
