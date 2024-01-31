@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'marks/edit'
   get 'marks/update'
   get 'marks/destroy'
-  get 'films/index'
+  get 'videos/index'
   get 'users_control/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -19,11 +19,11 @@ Rails.application.routes.draw do
 
   resources :users_control
 
-  resources :films do
+  resources :videos do
     resources :reviews
   end
 
-  resources :films do
-    resources :film_countries
+  resources :videos do
+    resources :video_countries
   end
 end

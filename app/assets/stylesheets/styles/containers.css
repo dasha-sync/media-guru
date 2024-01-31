@@ -82,7 +82,7 @@ table {
     box-shadow: var(--bs-box-shadow) !important;
 }
 
-.card-film:hover {
+.card-video:hover {
     box-shadow: 0rem 0rem 0rem rgba(0, 0, 0, .175)!important;
 }
 
@@ -105,12 +105,12 @@ table {
     box-shadow: var(--bs-box-shadow) !important;
 }
 
-.show-film {
+.show-video {
     width: 60%;
     padding-right: 10px;
 }
 
-.show-info-film {
+.show-info-video {
     width: 38.5%;
     margin-left: 10px;
 }
@@ -121,7 +121,7 @@ table {
     margin-top: 10px;
 }
 
-.container-films {
+.container-video {
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
@@ -134,7 +134,7 @@ table {
     /* or inline-flex */
 }
 
-.film {
+.video {
     display: block;
     margin-top: 10px;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175)!important;

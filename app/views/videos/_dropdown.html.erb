@@ -1,0 +1,38 @@
+<% if current_user&.admin? %>
+  <div class="dropdown">
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Добавить категории</b></button>
+    <ul class="dropdown-menu">
+      <li>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-country-modal'>
+          Добавить страны
+        </button>
+      </li>
+      <li>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-genre-modal'>
+          Добавить жанры
+        </button>
+      <li>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-speaker-modal'>
+          Добавить спикера
+        </button>
+      </li>
+      <li>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-director-modal'>
+          Добавить режиссера
+        </button>
+      </li>
+      <li>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-screenwriter-modal'>
+          Добавить сценариста
+        </button>
+      </li>
+    </ul>
+  </div>
+  <br>
+<% end %>
+
+<%= render partial: 'modal', locals: { target_id: 'new-country-modal', assotiation: :video_countries, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-genre-modal', assotiation: :video_genres, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-speaker-modal', assotiation: :video_speakers, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-director-modal', assotiation: :video_directors, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-screenwriter-modal', assotiation: :video_screenwriters, video: @video } %>
