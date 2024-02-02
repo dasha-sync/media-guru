@@ -1,0 +1,18 @@
+<% if @video.video_categories.present? %>
+    <div class="card">
+        <div class="card-header">
+            категории
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @video.video_categories.each do |video_category| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'video_categories/admin_index', locals: { video_category: video_category } %>
+                    <% else %>
+                        <%= render partial: 'video_categories/user_index', locals: { video_category: video_category } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>

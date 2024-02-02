@@ -24,11 +24,10 @@ Rails.application.routes.draw do
   end
 
   resources :videos do
-    resources :video_countries
-    resources :video_directors
-    resources :video_genres
+    resources :video_languages
+    resources :video_categories
+    resources :video_tags
     resources :video_speakers
-    resources :video_screenwriters
     resources :marks
   end
 end
