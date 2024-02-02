@@ -1,0 +1,18 @@
+<% if @video.video_tags.present? %>
+    <div class="card">
+        <div class="card-header">
+            Жары
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @video.video_tags.each do |video_tag| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'video_tags/admin_index', locals: { video_tag: video_tag } %>
+                    <% else %>
+                        <%= render partial: 'video_tags/user_index', locals: { video_tag: video_tag } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>

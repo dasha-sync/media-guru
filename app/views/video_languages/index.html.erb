@@ -1,0 +1,18 @@
+<% if @video.video_languages.present? %>
+    <div class="card">
+        <div class="card-header">
+            Языки
+        </div>
+        <div class="card-body">
+            <h4>
+                <% @video.video_languages.each do |video_language| %>
+                    <% if current_user&.admin? %>
+                        <%= render partial: 'video_languages/admin_index', locals: { video_language: video_language } %>
+                    <% else %>
+                        <%= render partial: 'video_languages/user_index', locals: { video_language: video_language } %>
+                    <% end %>
+                <% end %>
+            </h4>
+        </div>
+    </div>
+<% end %>
