@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class Video < ApplicationRecord
-  has_many :video_countries, dependent: :destroy
-  has_many :video_directors, dependent: :destroy
-  has_many :video_screenwriters, dependent: :destroy
+  has_many :video_languages, dependent: :destroy
+  has_many :video_categories, dependent: :destroy
   has_many :video_speakers, dependent: :destroy
-  has_many :video_genres, dependent: :destroy
+  has_many :video_tags, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :marks, dependent: :nullify
 

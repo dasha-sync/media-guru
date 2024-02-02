@@ -7,9 +7,9 @@
             <h4>
                 <% @video.video_speakers.each do |video_speaker| %>
                     <% if current_user&.admin? %>
-                        <%= render partial: 'video_screenwriters/admin_index', locals: { video_speaker: video_speaker } %>
+                        <%= render partial: 'video_speakers/admin_index', locals: { video_speaker: video_speaker } %>
                     <% else %>
-                        <%= render partial: 'video_screenwriters/user_index', locals: { video_speaker: video_speaker } %>
+                        <%= render partial: 'video_speakers/user_index', locals: { video_speaker: video_speaker } %>
                     <% end %>
                 <% end %>
             </h4>

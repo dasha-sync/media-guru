@@ -1,0 +1,13 @@
+<%= form_for [@video, VideoTag.new] do |form| %>
+  <div class="modal-content modal-pose">
+      <%= form.submit "Готово", class: 'btn btn-primary' %>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      <h5>
+        <div class="container-assotiation">
+            <% Tag.all.each do |tag| %>
+              <%= link_to tag.tag_name, "/", class: "btn btn-sm btn-outline-secondary" %>
+            <% end %>
+        </div>
+      </h5>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-COUNTRIES = [
+LANGUAGES = [
   'Афганистан',
   'Албания',
   'Антарктика',
@@ -248,7 +248,7 @@ COUNTRIES = [
   'Замбия'
 ].freeze
 
-GENRES = [
+TAGS = [
   'приключения',
   'тестирование',
   'backend разработка',
@@ -259,7 +259,7 @@ GENRES = [
   'трансляция'
 ].freeze
 
-SPEACKERS = [
+SPEAKERS = [
   'Дмитрий Лось',
   'Нейт Барбеттини',
   'Павел Мартысюк',
@@ -273,14 +273,9 @@ SPEACKERS = [
   'Антон Блинков'
 ].freeze
 
-DIRECTORS = [
+CATEGORIES = [
   'Innowise group',
   'Blink Agency',
   'OktaDev'
 ].freeze
 
-SCREENWRITERS = [
-  'Innowise group',
-  'Blink Agency',
-  'OktaDev'
-].freeze

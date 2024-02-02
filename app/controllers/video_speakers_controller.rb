@@ -17,7 +17,7 @@ class VideoSpeakersController < ApplicationController
   def create
     @video_speaker = @video.video_speakers.new(video_speaker_params)
 
-    @video_speaker.director = Speaker.find(params[:speaker_id])
+    @video_speaker.category = Speaker.find(params[:speaker_id])
 
     if @video_speaker.save
       flash.now[:notice] = "Сценрист успешно добавлен."
@@ -41,7 +41,7 @@ class VideoSpeakersController < ApplicationController
   end
 
   def video_speaker_params
-    params.require(:video_screenwriter).permit()
+    params.require(:video_speaker).permit()
   end
 
   def set_video

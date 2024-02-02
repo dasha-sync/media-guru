@@ -15,11 +15,10 @@
 
       <%= render partial: 'dropdown' %>
 
-      <%= render template: "video_countries/index", video: @video %>
-      <%= render template: "video_genres/index", video: @video %>
+      <%= render template: "video_languages/index", video: @video %>
+      <%= render template: "video_tags/index", video: @video %>
       <%= render template: "video_speakers/index", video: @video %>
-      <%= render template: "video_directors/index", video: @video %>
-      <%= render template: "video_screenwriters/index", video: @video %>
+      <%= render template: "video_categories/index", video: @video %>
       <br><h6>Описание</h6>
       <label><%=  simple_format(@video.video_description) %></label>
       <br>

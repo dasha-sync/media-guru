@@ -14,20 +14,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "countries", force: :cascade do |t|
-    t.string "country_name", null: false
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "directors", force: :cascade do |t|
-    t.string "director_fio", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "genre_name", null: false
+  create_table "languages", force: :cascade do |t|
+    t.string "language_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,14 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.index ["video_id"], name: "index_reviews_on_video_id"
   end
 
-  create_table "screenwriters", force: :cascade do |t|
-    t.string "screenwriter_fio", null: false
+  create_table "speakers", force: :cascade do |t|
+    t.string "speaker_fio", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "speakers", force: :cascade do |t|
-    t.string "speaker_fio", null: false
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,40 +62,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "video_countries", force: :cascade do |t|
+  create_table "video_categories", force: :cascade do |t|
     t.bigint "video_id", null: false
-    t.bigint "country_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_video_countries_on_country_id"
-    t.index ["video_id"], name: "index_video_countries_on_video_id"
+    t.index ["category_id"], name: "index_video_categories_on_category_id"
+    t.index ["video_id"], name: "index_video_categories_on_video_id"
   end
 
-  create_table "video_directors", force: :cascade do |t|
+  create_table "video_languages", force: :cascade do |t|
     t.bigint "video_id", null: false
-    t.bigint "director_id", null: false
+    t.bigint "language_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["director_id"], name: "index_video_directors_on_director_id"
-    t.index ["video_id"], name: "index_video_directors_on_video_id"
-  end
-
-  create_table "video_genres", force: :cascade do |t|
-    t.bigint "video_id", null: false
-    t.bigint "genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_video_genres_on_genre_id"
-    t.index ["video_id"], name: "index_video_genres_on_video_id"
-  end
-
-  create_table "video_screenwriters", force: :cascade do |t|
-    t.bigint "video_id", null: false
-    t.bigint "screenwriter_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["screenwriter_id"], name: "index_video_screenwriters_on_screenwriter_id"
-    t.index ["video_id"], name: "index_video_screenwriters_on_video_id"
+    t.index ["language_id"], name: "index_video_languages_on_language_id"
+    t.index ["video_id"], name: "index_video_languages_on_video_id"
   end
 
   create_table "video_speakers", force: :cascade do |t|
@@ -111,6 +87,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.datetime "updated_at", null: false
     t.index ["speaker_id"], name: "index_video_speakers_on_speaker_id"
     t.index ["video_id"], name: "index_video_speakers_on_video_id"
+  end
+
+  create_table "video_tags", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_video_tags_on_tag_id"
+    t.index ["video_id"], name: "index_video_tags_on_video_id"
   end
 
   create_table "videos", force: :cascade do |t|
@@ -125,14 +110,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
 
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "videos"
-  add_foreign_key "video_countries", "countries"
-  add_foreign_key "video_countries", "videos"
-  add_foreign_key "video_directors", "directors"
-  add_foreign_key "video_directors", "videos"
-  add_foreign_key "video_genres", "genres"
-  add_foreign_key "video_genres", "videos"
-  add_foreign_key "video_screenwriters", "screenwriters"
-  add_foreign_key "video_screenwriters", "videos"
+  add_foreign_key "video_categories", "categories"
+  add_foreign_key "video_categories", "videos"
+  add_foreign_key "video_languages", "languages"
+  add_foreign_key "video_languages", "videos"
   add_foreign_key "video_speakers", "speakers"
   add_foreign_key "video_speakers", "videos"
+  add_foreign_key "video_tags", "tags"
+  add_foreign_key "video_tags", "videos"
 end
