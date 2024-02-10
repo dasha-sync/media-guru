@@ -6,7 +6,7 @@ class Video < ApplicationRecord
   has_many :video_speakers, dependent: :destroy
   has_many :video_tags, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :marks, dependent: :nullify
+  has_many :marks
 
   mount_uploader :picture_url, PictureUrlUploader
   mount_uploader :video_url, VideoUrlUploader

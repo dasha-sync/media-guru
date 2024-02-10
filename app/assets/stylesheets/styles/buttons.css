@@ -97,3 +97,9 @@
 .dropdown-toggle {
     font-size: 14.5px;
 }
+
+.modal-btn {
+    position: relative;
+    margin-top: 15px;
+    left: 2%
+}

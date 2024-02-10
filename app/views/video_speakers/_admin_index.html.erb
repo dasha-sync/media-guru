@@ -1,6 +1,6 @@
 <span class="badge bg-secondary admin-span">
     <div class="container-line">
         <div class="badge-text"><%= video_speaker.speaker.speaker_fio  %></div>
-        <%= button_to "×", video_video_speakers_path(@video.id, video_speakers.id), method: :delete, class: "delete-span" %>
+        <%= button_to "×", video_video_speaker_path(@video.id, video_speaker.id), method: :delete, class: "delete-span" %>
     </div>
 </span>

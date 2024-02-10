@@ -17,31 +17,29 @@ class VideoSpeakersController < ApplicationController
   def create
     @video_speaker = @video.video_speakers.new(video_speaker_params)
 
-    @video_speaker.category = Speaker.find(params[:speaker_id])
-
     if @video_speaker.save
-      flash.now[:notice] = "Сценрист успешно добавлен."
+      redirect_to video_path(@video), notice: "Спикер успешно добавлен."
     else
-      flash.now[:error] = "Сценарист не может быть добавлен по какой-то причине."
+      redirect_to video_path(@video), error: "Спикер не может быть добавлен по какой-то причине."
     end
   end
 
   def destroy
     if @video_speaker.destroy
-      redirect_to video_path(@video), notice: 'Сценарист успешно удален.'
+      redirect_to video_path(@video), notice: 'Спикер успешно удален.'
     else
-      redirect_to video_path(@video), error: 'Сценарист не может быть удален по какой-то причине'
+      redirect_to video_path(@video), error: 'Спикер не может быть удален по какой-то причине'
     end
   end
 
   private
 
   def set_video_speaker
-    @video_speaker = @video.video_speaker.find(params[:id])
+    @video_speaker = @video.video_speakers.find(params[:id])
   end
 
   def video_speaker_params
-    params.require(:video_speaker).permit()
+    params.require(:video_speaker).permit(:speaker_id)
   end
 
   def set_video

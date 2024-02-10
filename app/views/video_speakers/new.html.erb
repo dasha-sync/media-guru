@@ -1,13 +1,10 @@
-<%= form_for [@video, VideoSpeaker.new] do |form| %>
-  <div class="modal-content modal-pose">
-      <%= form.submit "Готово", class: 'btn btn-primary' %>
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-      <h5>
-        <div class="container-assotiation">
-            <% Speaker.all.each do |speaker| %>
-                <%= link_to speaker.speaker_fio, "/", class: "btn btn-sm btn-outline-secondary" %>
-            <% end %>
-        </div>
-      </h5>
+<%= form_for [@video, VideoSpeaker.new], method: :new do |form| %>
+  <div class="modal-content modal-pose container-assotiation">
+    <h4>Добавить спикера</h4><br>
+    <%= form.collection_select :speaker_id, Speaker.all, :id,:speaker_fio,
+                              { include_blank: "Выберите спикера", isabled: "" },
+                              { class: "form-control input-modal"} %>
+    <%= form.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
+    <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
   </div>
 <% end %>

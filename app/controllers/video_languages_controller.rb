@@ -18,18 +18,17 @@ class VideoLanguagesController < ApplicationController
     @video_language = @video.video_languages.new(video_language_params)
 
     if @video_language.save
-      redirect_to video_path(@video), notice: 'Язык успешно добавлена.'
+      redirect_to video_path(@video), notice: 'Язык успешно добавлен.'
     else
-      flash.now[:alert] = 'Язык не может быть добавлена по какой-то причине.'
-      render :new
+      redirect_to video_path(@video), error: 'Язык не может быть добавлен по какой-то причине.'
     end
   end
 
   def destroy
     if @video_language.destroy
-      redirect_to video_path(@video), notice: 'Язык успешно удалена.'
+      redirect_to video_path(@video), notice: 'Язык успешно удален.'
     else
-      flash.now[:alert] = 'Язык не может быть удалена по какой-то причине.'
+      flash.now[:alert] = 'Язык не может быть удален по какой-то причине.'
       render :show
     end
   end
@@ -41,7 +40,7 @@ class VideoLanguagesController < ApplicationController
   end
 
   def video_language_params
-    params.require(:video_language).permit(:language)
+    params.require(:video_language).permit(:language_id)
   end
 
   def set_video
