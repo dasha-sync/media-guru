@@ -1,14 +1,11 @@
 <%= form_for [@video, VideoLanguage.new], method: :new do |form| %>
   <div class="modal-content modal-pose container-assotiation">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-      <h5>
-        <div class="container-assotiation">
-          <% Language.all.each do |language| %>
-            <%= hidden_field_tag :language,  value: language %>
-            <%= form.submit language.language_name, class: "btn btn-sm btn-outline-secondary" %>
-          <% end %>
-      <%= form.submit "Готово", class: 'btn btn-primary' %>
-        </div>
-      </h5>
+    <h4>Добавить язык</h4><br>
+      <%= form.collection_select :language_id, Language.all, :id,:language_name,
+                                { include_blank: "Выберите язык", class: "modal-input" },
+                                { class: "form-control input-modal"} %>
+      <%= form.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
+      <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
   </div>
 <% end %>
+

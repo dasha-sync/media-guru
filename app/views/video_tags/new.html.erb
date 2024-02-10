@@ -1,13 +1,10 @@
-<%= form_for [@video, VideoTag.new] do |form| %>
-  <div class="modal-content modal-pose">
-      <%= form.submit "Готово", class: 'btn btn-primary' %>
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-      <h5>
-        <div class="container-assotiation">
-            <% Tag.all.each do |tag| %>
-              <%= link_to tag.tag_name, "/", class: "btn btn-sm btn-outline-secondary" %>
-            <% end %>
-        </div>
-      </h5>
+<%= form_for [@video, VideoTag.new], method: :new do |form| %>
+  <div class="modal-content modal-pose container-assotiation">
+    <h4>Добавить тэг</h4><br>
+    <%= form.collection_select :tag_id, Tag.all, :id,:tag_name,
+                              { include_blank: "Выберите тэг", isabled: "" },
+                              { class: "form-control input-modal"} %>
+    <%= form.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
+    <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
   </div>
 <% end %>

@@ -1,0 +1,9 @@
+<%= form_with model: @category, method: :new do |form| %>
+  <div class="modal-content modal-pose container-assotiation">
+    <h4>Добавить язык</h4><br>
+        <%= form.text_field :category_name, class: "form-control", placeholder: 'Название' %>
+      <%= form.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
+      <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
+  </div>
+<% end %>
+

@@ -166,4 +166,21 @@ table {
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
+    padding: 20px;
+}
+
+.input-modal {
+    width: 100% !important;
+}
+
+.div-modal {
+    width: 100% !important;
+}
+
+.text--dark {
+    color: black !important;
+}
+
+.bg-light {
+    background-color: #eee3e3 !important;
 }

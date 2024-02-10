@@ -9,3 +9,16 @@
 .left-small-margin {
     margin-left: 10px !important;
 }
+
+.modal-input {
+    width: 100% !important;
+}
+
+.container-line {
+    font-size: 15px !important;
+}
+
+.text-index {
+    margin-bottom: 2px !important;
+    padding-bottom: 0 !important;
+}

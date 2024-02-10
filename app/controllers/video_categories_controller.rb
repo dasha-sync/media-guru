@@ -17,12 +17,10 @@ class VideoCategoriesController < ApplicationController
   def create
     @video_category = @video.video_categories.new(video_category_params)
 
-    @video_category.category = categories.find(params[:category_id])
-
     if @video_category.save
-      flash.now[:notice] = "Категория успешно добавлен."
+      redirect_to video_path(@video), notice: "Категория успешно добавлена."
     else
-      flash.now[:error] = "Категория не может быть добавлен по какой-то причине."
+      redirect_to video_path(@video), error:  "Категория не может быть добавленс по какой-то причине."
     end
   end
 
@@ -41,7 +39,7 @@ class VideoCategoriesController < ApplicationController
   end
 
   def video_category_params
-    params.require(:video_category).permit()
+    params.require(:video_category).permit(:category_id)
   end
 
   def set_video

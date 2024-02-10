@@ -17,12 +17,10 @@ class VideoTagsController < ApplicationController
   def create
     @video_tag = @video.video_tags.new(video_tag_params)
 
-    @video_tag.category = tag.find(params[:tag_id])
-
     if @video_tag.save
-      flash.now[:notice] = "Тэг успешно добавлен."
+      redirect_to video_path(@video), notice: "Тэг успешно добавлен."
     else
-      flash.now[:error] = "Тэг не может быть добавлен по какой-то причине."
+      redirect_to video_path(@video), error: "Тэг не может быть добавлен по какой-то причине."
     end
   end
 
@@ -41,7 +39,7 @@ class VideoTagsController < ApplicationController
   end
 
   def video_tag_params
-    params.require(:video_tag).permit()
+    params.require(:video_tag).permit(:tag_id)
   end
 
   def set_video

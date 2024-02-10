@@ -17,10 +17,18 @@ rescue ActiveRecord::RecordInvalid => e
   Rails.logger.debug e.message
 end
 
+Tag.all.each do |i|
+  i.destroy
+end
+
 TAGS.each do |name|
   Tag.find_or_create_by(
     tag_name: name
   )
+end
+
+Language.all.each do |i|
+  i.destroy
 end
 
 LANGUAGES.each do |name|
@@ -29,10 +37,18 @@ LANGUAGES.each do |name|
   )
 end
 
+Category.all.each do |i|
+  i.destroy
+end
+
 CATEGORIES.each do |name|
   Category.find_or_create_by(
     category_name: name
   )
+end
+
+Speaker.all.each do |i|
+  i.destroy
 end
 
 SPEAKERS.each do |fio|
