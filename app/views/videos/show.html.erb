@@ -14,6 +14,7 @@
       <%= @video.release_date %></p>
 
       <%= render partial: 'dropdown' %>
+          <%= render partial: 'dropdown_new' %>
 
       <%= render template: "video_languages/index", video: @video %>
       <%= render template: "video_tags/index", video: @video %>

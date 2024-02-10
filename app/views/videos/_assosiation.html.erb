@@ -1,0 +1,9 @@
+<% if video.video_articles.present? %>
+  <% video.video_articles.each do |i| %>
+    <span class="badge bg-secondary">
+      <div class="container-line">
+          <%= i.article.article_title %>
+      </div>
+    </span>
+  <% end %><br>
+<% end %>

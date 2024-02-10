@@ -1,32 +1,24 @@
 <% if current_user&.admin? %>
   <div class="dropdown">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Добавить категории</b></button>
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Добавить зависимость с характеристиками</b></button>
     <ul class="dropdown-menu">
       <li>
-        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-language-modal'>
-          Добавить языки
-        </button>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-view-language-modal'>язык</button>
       </li>
       <li>
-        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-tag-modal'>
-          Добавить тэги
-        </button>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-view-tag-modal'>тэг</button>
       <li>
-        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-speaker-modal'>
-          Добавить спикера
-        </button>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-view-speaker-modal'>спикера</button>
       </li>
       <li>
-        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-category-modal'>
-          Добавить категорию
-        </button>
+        <button class='dropdown-item' data-bs-toggle='modal' data-bs-target='#new-view-category-modal'>категорию</button>
       </li>
     </ul>
   </div>
   <br>
 <% end %>
 
-<%= render partial: 'modal', locals: { target_id: 'new-language-modal', assotiation: :video_languages, video: @video } %>
-<%= render partial: 'modal', locals: { target_id: 'new-tag-modal', assotiation: :video_tags, video: @video } %>
-<%= render partial: 'modal', locals: { target_id: 'new-speaker-modal', assotiation: :video_speakers, video: @video } %>
-<%= render partial: 'modal', locals: { target_id: 'new-category-modal', assotiation: :video_categories, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-view-language-modal', assotiation: :video_languages, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-view-tag-modal', assotiation: :video_tags, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-view-speaker-modal', assotiation: :video_speakers, video: @video } %>
+<%= render partial: 'modal', locals: { target_id: 'new-view-category-modal', assotiation: :video_categories, video: @video } %>
