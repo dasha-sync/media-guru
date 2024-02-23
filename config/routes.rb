@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :video_tags
     resources :video_speakers
     resources :marks
+    resourses :favorites
   end
 end
