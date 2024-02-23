@@ -1,11 +1,9 @@
-<%= form_with model: @language do |form| %>
-  <%= form.fields_for :language  do |builder| %>
+<%= form_with model: @language do |language_form| %>
   <div class="modal-content modal-pose container-assotiation">
     <h4>Добавить язык</h4><br>
-      <%= builder.text_field :language_name, class: "form-control", placeholder: 'Название' %>
-      <%= builder.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
+      <%= language_form.text_field :language_name, class: "form-control", placeholder: 'Название' %>
+      <%= language_form.submit "Добавить", class: 'btn btn-primary input-modal' %><br>
       <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
   </div>
-  <% end %>
 <% end %>
 

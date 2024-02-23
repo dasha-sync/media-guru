@@ -4,6 +4,8 @@
       <br>
       <h4><%= @video.video_name %></h4>
       <%= video_tag @video.video_url.to_s, controls: true, class: "video rounded" %>
+
+      <%# link_to "Добавить оценку", new_video_mark_path, "btn btn-outline-success btn-sm" %>
     </div>
   </div>
   <div class="border rounded show-info-video item">
@@ -14,14 +16,16 @@
       <%= @video.release_date %></p>
 
       <%= render partial: 'dropdown' %>
-          <%= render partial: 'dropdown_new' %>
+      <%# render partial: 'dropdown_new' %>
 
       <%= render template: "video_languages/index", video: @video %>
       <%= render template: "video_tags/index", video: @video %>
       <%= render template: "video_speakers/index", video: @video %>
       <%= render template: "video_categories/index", video: @video %>
       <br><h6>Описание</h6>
-      <label><%=  simple_format(@video.video_description) %></label>
+      <label>
+        <%= simple_format(@video.video_description) %>
+      </label>
       <br>
     </div>
   </div>

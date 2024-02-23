@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_14_063635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.string "language_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "marks", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "digit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_marks_on_user_id"
+    t.index ["video_id"], name: "index_marks_on_video_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -106,8 +116,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_010043) do
     t.string "picture_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "key"
+    t.string "low_res_key"
   end
 
+  add_foreign_key "marks", "users"
+  add_foreign_key "marks", "videos"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "videos"
   add_foreign_key "video_categories", "categories"
