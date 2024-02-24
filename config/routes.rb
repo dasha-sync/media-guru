@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags
   resources :speakers
+  resources :favorites
+
+  post 'videos/:id/add_to_favorites', to: 'videos#add_to_favorites', as: 'add_to_favorites'
+  post 'videos/:id/delete_from_favorites', to: 'videos#delete_from_favorites', as: 'delete_from_favorites'
+  post 'videos/:id/delete_videos_from_favorites', to: 'videos#delete_videos_from_favorites', as: 'delete_videos_from_favorites'
 
   resources :videos do
     resources :reviews
@@ -24,6 +29,5 @@ Rails.application.routes.draw do
     resources :video_tags
     resources :video_speakers
     resources :marks
-    resourses :favorites
   end
 end
