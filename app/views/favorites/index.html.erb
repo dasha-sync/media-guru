@@ -1,2 +1,82 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<div class="border rounded">
+    <div class="container mb-4">
+      <br>
+        <h1>Избранные</h1><br>
+        <% if current_user.favorites.empty? %>
+          <h2 class="text-center p-4">Нет фильмов</h2>
+        <% else %>
+          <% current_user.favorites.reverse.each_with_index do |favirite, index| %>
+            <div class="card card-video">
+              <div class="card-body">
+                <table>
+                  <tr>
+                    <td class="table-pic" onclick="location.href='<%= video_path(favirite.video.id) %>'">
+                      <% if favirite.video.picture_url %>
+                        <%= image_tag favirite.video.picture_url.url, height: '150', width: '255', class: "rounded float-left" || :no_picture %>
+                      <% end %>
+                    </td>
+                    <td class="table-text"  onclick="location.href='<%= video_path(favirite.video.id) %>'">
+                      <div class="text-index"><b><%= favirite.video.video_name %></b></div>
+                      <% if favirite.video.video_languages.present? %>
+                        <% favirite.video.video_languages.each do |i| %>
+                          <span class="badge bg-light text-dark">
+                            <div class="container-line">
+                                <%= i.language.language_name %>
+                            </div>
+                          </span>
+                        <% end %><br>
+                      <% end %>
+                      <% if favirite.video.video_tags.present? %>
+                        <% favirite.video.video_tags.each do |i| %>
+                          <span class="badge bg-light text-dark">
+                            <div class="container-line">
+                                <%= i.tag.tag_name %>
+                            </div>
+                          </span>
+                        <% end %><br>
+                      <% end %>
+                      <% if favirite.video.video_speakers.present? %>
+                        <% favirite.video.video_speakers.each do |i| %>
+                          <span class="badge bg-light text-dark">
+                            <div class="container-line">
+                                <%= i.speaker.speaker_fio %>
+                            </div>
+                          </span>
+                        <% end %><br>
+                      <% end %>
+                      <% if favirite.video.video_categories.present? %>
+                        <% favirite.video.video_categories.each do |i| %>
+                          <span class="badge bg-light text-dark">
+                            <div class="container-line">
+                                <%= i.category.category_name %>
+                            </div>
+                          </span>
+                        <% end %>
+                      <% end %>
+                    </td>
+                    <% if Favorite.favorite_exist(favirite.video.id, current_user).present? %>
+                      <td class='table-button'>
+                        <%= button_to 'В избранных', delete_from_favorites_path(favirite.video), method: :post, class: 'btn btn-danger btn-favorites table-btn' %>
+                      </td>
+                    <% else %>
+                      <td class='table-button'>
+                        <%= button_to 'В избранные', add_to_favorites_path(favirite.video), method: :post, class: 'btn btn-outline-danger btn-favorites table-btn' %>
+                      </td>
+                    <% end %>
+                    <% if current_user&.admin? %>
+                      <td class='table-button'>
+                        <%= link_to "Изменить", edit_video_path(favirite.video.id), class: "btn btn-outline-danger" %>
+                      </td>
+                      <td class='table-button'>
+                        <%= button_to "Удалить", video_path(favirite.video.id), method: :delete, class: "btn btn-danger" %>
+                      </td>
+                    <% end %>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
