@@ -23,9 +23,7 @@
 }
 
 .table-button {
-    text-align: right;
     vertical-align: top;
-    width: 8%;
 }
 
 .btn {
@@ -102,4 +100,40 @@
     position: relative;
     margin-top: 15px;
     left: 2%
+}
+
+.bookmark-form {
+    display: inline-block;
+  }
+
+.bookmark-label {
+display: inline-block;
+cursor: pointer;
+}
+
+.bookmark-checkbox {
+display: none;
+}
+
+.bookmark-button {
+padding: 10px 20px;
+background-color: #3498db;
+color: #fff;
+border-radius: 5px;
+}
+
+.bookmark-checkbox:checked + .bookmark-button {
+background-color: #2980b9;
+}
+
+.bookmark-button:hover {
+background-color: #2980b9;
+}
+
+.btn-favorites {
+    width: 130px;
+}
+
+.table-btn {
+    margin-left: 5px;
 }

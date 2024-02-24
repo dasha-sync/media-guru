@@ -59,12 +59,21 @@
                       <% end %>
                     <% end %>
                   </td>
+                  <% if Favorite.favorite_exist(video.id, current_user).present? %>
+                    <td class='table-button'>
+                      <%= button_to 'В избранных', delete_from_favorites_path(video), method: :post, class: 'btn btn-danger btn-favorites table-btn' %>
+                    </td>
+                  <% else %>
+                    <td class='table-button'>
+                      <%= button_to 'В избранные', add_to_favorites_path(video), method: :post, class: 'btn btn-outline-danger btn-favorites table-btn' %>
+                    </td>
+                  <% end %>
                   <% if current_user&.admin? %>
                     <td class='table-button'>
-                      <%= link_to "Изменить", edit_video_path(video.id), class: "btn btn-outline-danger" %>
+                      <%= link_to "Изменить", edit_video_path(video.id), class: "btn btn-outline-danger table-btn" %>
                     </td>
                     <td class='table-button'>
-                      <%= button_to "Удалить", video_path(video.id), method: :delete, class: "btn btn-danger" %>
+                      <%= button_to "Удалить", video_path(video.id), method: :delete, class: "btn btn-danger table-btn" %>
                     </td>
                   <% end %>
                 </tr>
