@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   before_action :set_favorite, only: %i[edit show update destroy]
 
   def index
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites.page(params[:page]).per(params[:per_page])
     @favorite = Favorite.new
   end
 

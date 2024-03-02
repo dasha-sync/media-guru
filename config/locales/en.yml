@@ -299,3 +299,20 @@ en:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Предыдущая"
+      next: "Следующая &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "%{entry_name} не найдено"
+          one: "Демонстрация <b>1</b> %{entry_name}"
+          other: "Демонстрация <b>все %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Демонстрация %{entry_name} <b>%{first}–%{last}</b> из <b>%{total}</b> глобально"
+

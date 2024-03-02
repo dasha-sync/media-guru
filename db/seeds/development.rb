@@ -56,3 +56,37 @@ SPEAKERS.each do |fio|
     speaker_fio: fio
   )
 end
+
+Mark.find_or_create_by(
+  user: User.first,
+  video: Video.first,
+  digit: 1
+)
+
+Mark.find_or_create_by(
+  user: User.second,
+  video: Video.first,
+  digit: 1
+)
+
+Mark.find_or_create_by(
+  user: User.third,
+  video: Video.first,
+  digit: 1
+)
+
+Mark.find_or_create_by(
+  user: User.first,
+  video: Video.second,
+  digit: 5
+)
+Mark.find_or_create_by(
+  user: User.second,
+  video: Video.second,
+  digit: 5
+)
+Mark.find_or_create_by(
+  user: User.third,
+  video: Video.second,
+  digit: 5
+)

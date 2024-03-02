@@ -4,19 +4,40 @@
       <br>
       <h4><%= @video.video_name %></h4>
       <%= video_tag @video.video_url.to_s, controls: true, class: "video rounded" %>
-
-      <%# link_to "Добавить оценку", new_video_mark_path, "btn btn-outline-success btn-sm" %>
+      <div class="rating">
+        <div class="stars">
+          <% if @video.rating.nil? %>
+            Рейтинг: нет
+          <% else %>
+            Рейтинг:&nbsp;
+            <% (1..5).each do |i| %>
+              <% if @video.rating >= i %>
+                <span class="full-star span"></span>
+              <% else %>
+                <span class="span"></span>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <% if Mark.where(user: current_user, video: @video).present? %>
+            <%= button_to "Удалить оценку", video_mark_path(@video.id, Mark.where(video: @video, user: current_user).first.id), method: :delete, class: "btn btn-outline-danger btn-rating" %>
+          <% else %>
+            <button class='btn btn-outline-secondary btn-rating' data-bs-toggle='modal' data-bs-target='#new-mark-modal'>Оценить видео</button>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
+  <%= render partial: 'modal_mark', locals: { target_id: 'new-mark-modal', assotiation: :marks, video: @video} %>
+
   <div class="border rounded show-info-video item">
     <div class="container mb-4 ">
       <br>
       <h6>Дата релиза</h6>
-      <p><%= @video.id %>
       <%= @video.release_date %></p>
 
       <%= render partial: 'dropdown' %>
-      <%# render partial: 'dropdown_new' %>
 
       <%= render template: "video_languages/index", video: @video %>
       <%= render template: "video_tags/index", video: @video %>
@@ -34,7 +55,7 @@
 <div class="border rounded show-recensions">
   <div class="container mb-4">
     <br>
-    <h2>Рецензии</h2>
+    <h2>Комментарии</h2>
     <%= render 'reviews/form', review: @review %>
 
     <% @reviews.reverse.each do |review| %>

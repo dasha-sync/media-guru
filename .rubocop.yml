@@ -19,3 +19,6 @@ Metrics/BlockLength:
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - app/controllers/**/*
+
+Style/StringLiterals:
+  Enabled: false

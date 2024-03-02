@@ -25,7 +25,7 @@ class MarksController < ApplicationController
     if @mark.save
       redirect_to video_path(@video), notice: 'Оценка успешно добавлена.'
     else
-      render :new, status: :unprocessable_entity, error: 'Оценка не может быть добавлена по какой-то причине.'
+      redirect_to video_path(@video), status: :unprocessable_entity, notice: 'Оценка не может быть добавлена по какой-то причине.'
     end
   end
 
@@ -33,7 +33,7 @@ class MarksController < ApplicationController
     if @mark.update(mark_params)
       redirect_to video_path(@video), notice: 'Оценка успешно обновлен'
     else
-      render :edit, status: :unprocessable_entity, error: 'Оценка не может быть обновлена по какой-то причине.'
+      redirect_to video_path(@video), status: :unprocessable_entity, notice: 'Оценка не может быть обновлена по какой-то причине.'
     end
   end
 
@@ -56,6 +56,6 @@ class MarksController < ApplicationController
   end
 
   def mark_params
-    params.require(:mark).permit(:diget)
+    params.require(:mark).permit(:digit)
   end
 end

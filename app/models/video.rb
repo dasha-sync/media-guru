@@ -17,4 +17,6 @@ class Video < ApplicationRecord
   validates :video_description, presence: true
   validates :picture_url, presence: true
   validates :video_url, presence: true
+
+  paginates_per 25
 end

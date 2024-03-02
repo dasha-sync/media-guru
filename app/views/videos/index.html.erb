@@ -81,6 +81,10 @@
             </div>
           </div>
         <% end %>
+        <div class="d-flex justify-content-center">
+          <%= paginate @videos %><div>
+          <%= render partial: 'videos/dropdown_pag' %></div>
+        </div>
       <% end %>
   </div>
 </div>
