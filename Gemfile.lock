@@ -121,6 +121,10 @@ GEM
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hairtrigger (1.1.1)
+      activerecord (>= 6.0, < 8)
+      ruby2ruby (~> 2.4)
+      ruby_parser (~> 3.10)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -140,6 +144,18 @@ GEM
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     json (2.7.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -248,6 +264,12 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.0)
       ffi (~> 1.12)
+    ruby2ruby (2.5.0)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.6)
+    ruby_parser (3.21.0)
+      racc (~> 1.5)
+      sexp_processor (~> 4.16)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -261,6 +283,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sexp_processor (4.17.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -315,10 +338,12 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  hairtrigger
   image_processing
   jbuilder
   jquery-rails
   jsbundling-rails
+  kaminari
   pg (~> 1.1)
   popper_js
   pry

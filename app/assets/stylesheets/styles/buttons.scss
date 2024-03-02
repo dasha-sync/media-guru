@@ -137,3 +137,22 @@ background-color: #2980b9;
 .table-btn {
     margin-left: 5px;
 }
+
+.btn-rating {
+    margin-top: 9px;
+}
+
+.page-link {
+    color: #6c757d;
+}
+
+.page-link.active, .active > .page-link {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.page-link:hover{
+    color: #6c757d;
+}

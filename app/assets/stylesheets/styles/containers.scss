@@ -185,3 +185,56 @@ table {
 .bg-light {
     background-color: #eee3e3 !important;
 }
+
+.stars {
+    color: #c5c5c5;
+    font-size: 24px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  .stars .span {
+    width: 1.1em;
+  }
+  .stars span {
+    display: inline-block;
+    height: 25px;
+    justify-content: flex-end;
+  }
+  .stars .span:before {
+    content: "\2605";
+    position: absolute;
+  }
+  .full-star:before {
+    content: "\2605";
+    color: #ffcf00; /* Цвет активной звезды */
+  }
+.rating {
+    color: #c5c5c5;
+    font-size: 24px;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+select {
+    @extend .form-control;
+}
+
+option {
+    @extend .form-control;
+}
+
+#mark_digit {
+    @extend .form-control;
+}
+
+.pag{
+    margin-left: 5px !important;
+    height: 37.8px !important;
+}
+
+.d-flex {
+    height: 37.8px !important
+}

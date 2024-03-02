@@ -1,8 +1,9 @@
 <%= form_for [@video, @mark] do |f| %>
-  <!-- Your form fields for the review -->
-  <div class="field">
-    <%= f.check_box :digit, {}, 1, "nil" %> AB <br><br>
+  <div class="modal-content modal-pose container-assotiation">
+    <h4>Добавить категорию</h4><br>
+    <%= f.select :digit, options_for_select(1..5), class: "form-control" %>
+    <%= f.submit "Оценить", class: 'btn btn-primary input-modal' %><br>
+    <button type="button" class="btn-close modal-btn" aria-label="Close" data-bs-dismiss="modal"></button>
   </div>
-  <%= f.submit 'Опубликовать', class: "btn btn-primary" %>
   <br><br>
 <% end %>
