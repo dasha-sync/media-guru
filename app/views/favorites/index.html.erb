@@ -3,7 +3,7 @@
       <br>
         <h1>Избранные</h1><br>
         <% if current_user.favorites.empty? %>
-          <h2 class="text-center p-4">Нет фильмов</h2>
+          <h2 class="text-center p-4">У вас нет избранных видео</h2>
         <% else %>
           <% current_user.favorites.reverse.each_with_index do |favirite, index| %>
             <div class="card card-video">
@@ -76,6 +76,10 @@
               </div>
             </div>
           <% end %>
+          <div class="d-flex justify-content-center">
+            <%= paginate @favorites %>
+            <%= render partial: 'favorites/dropdown_pag' %>
+          </div>
         <% end %>
     </div>
   </div>

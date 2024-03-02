@@ -4,12 +4,13 @@ class VideosController < ApplicationController
   before_action :set_video, only: %i[edit show update destroy add_to_favorites delete_from_favorites delete_from_videos_favorites]
 
   def index
-    @videos = Video.all
+    @videos = Video.order(:video_name).page(params[:page]).per(params[:per_page])
   end
 
   def show
     @reviews = @video.reviews
     @review = Review.new
+    @mark = @video.marks.new
   end
 
   def new

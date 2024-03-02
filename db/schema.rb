@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_120800) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,8 +41,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_120800) do
     t.integer "digit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "video_id"], name: "index_marks_on_user_id_and_video_id", unique: true
     t.index ["user_id"], name: "index_marks_on_user_id"
     t.index ["video_id"], name: "index_marks_on_video_id"
+    t.check_constraint "digit >= 1 AND digit <= 5", name: "digit_check"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -127,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_120800) do
     t.datetime "updated_at", null: false
     t.string "key"
     t.string "low_res_key"
+    t.integer "rating"
   end
 
   add_foreign_key "favorites", "users"
@@ -143,4 +146,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_120800) do
   add_foreign_key "video_speakers", "videos"
   add_foreign_key "video_tags", "tags"
   add_foreign_key "video_tags", "videos"
+  create_trigger("marks_after_insert_row_tr", :generated => true, :compatibility => 1).
+      on("marks").
+      after(:insert) do
+    <<-SQL_ACTIONS
+        UPDATE videos SET rating = (
+          select avg(marks.digit)
+          from marks
+              where marks.video_id = NEW.video_id)
+          WHERE videos.id = NEW.video_id;
+    SQL_ACTIONS
+  end
+
+  create_trigger("marks_after_delete_row_tr", :generated => true, :compatibility => 1).
+      on("marks").
+      after(:delete) do
+    <<-SQL_ACTIONS
+        UPDATE videos SET rating = (
+          select avg(marks.digit)
+          from marks
+              where marks.video_id = OLD.video_id)
+          WHERE videos.id = OLD.video_id;
+    SQL_ACTIONS
+  end
+
 end
