@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :marks
   has_many :favorites
+  has_many :watched_videos
+  has_many :user_activities, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,0 +1,52 @@
+
+<h1>Популярность видео</h1>
+<div class="popularity-container">
+  <div>
+    <table class="popularity-table">
+      <tr><th colspan="2"><h3>по категориям</h3></th></tr>
+      <% @category_videos.each do |category, videos| %>
+        <tr><th><%= category %></th>
+          <td>
+            <ul>
+              <% videos.each do |video| %>
+              <li><%= video %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div>
+    <table class="popularity-table">
+      <tr><th colspan="2"><h3>по спикерам</h3></th></tr>
+      <% @speaker_videos.each do |speaker, videos| %>
+        <tr><th><%= speaker %></th>
+          <td>
+            <ul>
+              <% videos.each do |video| %>
+              <li><%= video %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div>
+    <table class="popularity-table">
+      <tr><th colspan="2"><h3>по языкам</h3></th></tr>
+      <% @language_videos.each do |language, videos| %>
+        <tr><th><%= language %></th>
+          <td>
+            <ul>
+              <% videos.each do |video| %>
+              <li><%= video %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -11,6 +11,7 @@
     width: 100% !important;
     top: 0% !important;
     z-index: 1 !important;
+    padding-top: 15px;
 }
 
 .secondary {
@@ -237,4 +238,65 @@ option {
 
 .d-flex {
     height: 37.8px !important
+}
+
+.filter-container {
+    display: flex;
+    justify-content: flex-start;
+    div {
+        margin-right: 5px;
+    }
+}
+
+.user-report-table {
+    width: 50% !important;
+}
+
+.report {
+    border: 1px solid;
+    border-collapse: collapse;
+    th,tr,td{
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+}
+
+.container-users{
+    display: flex;
+    justify-content: flex-start;
+    div {
+        margin-right: 10px;
+    }
+}
+
+.container-watched {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-video-report {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    .video-report {
+        margin-right: 5px;
+    }
+}
+
+.popularity-table {
+    border: 1px solid;
+    border-collapse: collapse;
+    th,tr,td{
+        border: 1px solid;
+        border-collapse: collapse;
+    }
+
+    th {
+        width: 5% !important;
+    }
+}
+
+.popularity-container{
+    display: flex;
+    justify-content: flex-start;
 }

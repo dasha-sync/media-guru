@@ -2,9 +2,6 @@
   <%= link_to "MediaGuru", root_path, class: "navbar-brand home-link left-margin" %>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <%= link_to "Главная", root_path, class: "nav-link" %>
-      </li>
       <% if current_user %>
         <li class="nav-item active">
           <%= link_to "Каталог", videos_path(per_page: 25, search: params[:search]), class: "nav-link" %>
@@ -15,12 +12,13 @@
       <% end %>
       <% if current_user&.admin? %>
         <li class="nav-item active">
-          <%= link_to "Управление пользователями", users_control_path(User.first, per_page: 25, search: params[:search]), class: "nav-link" %>
+          <%= link_to "Управление пользователями", users_control_index_path(per_page: 25, search: params[:search]), class: "nav-link" %>
         </li>
       <% end %>
     </ul>
     <ul class="navbar-nav ms-auto devise-butt">
       <% if current_user %>
+        <li class="nav-item"> <%= render partial: "videos/search" %></li>
         <li class="nav-item"> <%= link_to "Настройки", edit_user_registration_path, class: "nav-link" %></li>
         <li class="nav-item"> <%= button_to "Выход", destroy_user_session_path, method: :delete, class: "btn btn-small btn-primary mx-2" %></li>
       <% else %>
