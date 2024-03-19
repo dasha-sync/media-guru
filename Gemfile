@@ -76,12 +76,16 @@ gem 'hairtrigger'
 
 gem 'kaminari'
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities. [https://github.com/pry/pry]
   gem 'pry'
+  gem 'pry-rails'
 
   # It's a library for generating fake data such as names, addresses, and phone numbers. [https://github.com/faker-ruby/faker]
   gem 'faker'

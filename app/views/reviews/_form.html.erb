@@ -1,7 +1,7 @@
 <%= form_for [@video, @review] do |f| %>
   <!-- Your form fields for the review -->
   <div class="field">
-    <%= f.text_area :text, rows: 1, class: "form-control", placeholder: 'Написать рецензию' %>
+    <%= f.text_area :text, rows: 1, class: "form-control", placeholder: 'Написать комментарий' %>
   </div>
   <%= f.submit 'Опубликовать', class: "btn btn-primary" %>
   <br><br>

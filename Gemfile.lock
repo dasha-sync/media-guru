@@ -194,6 +194,8 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -322,6 +324,9 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wicked_pdf (2.8.0)
+      activesupport
+    wkhtmltopdf-binary (0.12.6.6)
     zeitwerk (2.6.12)
 
 PLATFORMS
@@ -347,6 +352,7 @@ DEPENDENCIES
   pg (~> 1.1)
   popper_js
   pry
+  pry-rails
   puma (~> 5.0)
   rails (~> 7.0.8)
   redis (~> 4.0)
@@ -360,9 +366,11 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.19
+   2.5.6

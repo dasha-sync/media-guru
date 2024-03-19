@@ -5,11 +5,6 @@
 <%= render partial: 'videos/error', locals: { video: video, attribute: :name} %>
 
 <div class="field">
-    <%= f.datetime_field :release_date, class: "form-control", placeholder: 'Дата релиза' %>
-</div>
-<%= render partial: 'videos/error', locals: { video: video, attribute: :release_date} %>
-
-<div class="field">
     <%= f.text_area :video_description, rows: 10, class: "form-control", placeholder: 'Описание' %>
 </div>
 <%= render partial: 'videos/error', locals: { video: video, attribute: :video_description} %>
@@ -21,8 +16,8 @@
 <%= render partial: 'videos/error', locals: { video: video, attribute: :picture_url} %>
 
 <div class="field">
-    <%= f.label "Выберите фильм" %>
-    <%= f.file_field :video_url, class: "form-control", placeholder: 'Фильм' %>
+    <%= f.label "Выберите видео" %>
+    <%= f.file_field :video_url, class: "form-control", placeholder: 'Видео' %>
 </div>
 <%= render partial: 'videos/error', locals: { video: video, attribute: :video_url} %>
 

@@ -1,7 +1,15 @@
 <div class="border rounded">
-  <div class="container mb-4">
+  <div class="container mb-4"><br>
+    <div class="container-users">
+      <div><h3>Пользователи</h3></div>
+      <div>
+        <div class="btn-group" role="group">
+          <%= link_to "Отчет по активности полььзователей", users_control_user_activity_report_path, class: "btn btn-outline-secondary btn-sm" %>
+          <%= link_to ".pdf", '/users_control/user_activity_report.pdf', class: "btn btn-outline-secondary btn-sm" %>
+        </div>
+      </div>
+    </div>
     <br>
-    <h1>Пользователи</h1><br>
     <% if current_user&.admin? %>
       <table class="table table-hover">
         <tr>
@@ -11,7 +19,7 @@
           <th class="bg-transparent">Роль</th>
           <th class="bg-transparent"></th>
         </tr>
-        <% User.all.each_with_index do |user, index| %>
+        <% @users.each_with_index do |user, index| %>
           <tr>
             <td class="bg-transparent"> <%= user.id %></td>
             <td class="bg-transparent"><%= user.username %></td>
@@ -22,8 +30,8 @@
         <% end %>
       </table>
       <div class="d-flex justify-content-center">
-        <%= paginate @videos %><div>
-        <%= render partial: 'videos/dropdown_pag' %></div>
+        <%= paginate @users %><div>
+        <%= render partial: 'users_control/dropdown_pag' %></div>
       </div>
     <% end %>
   </div>

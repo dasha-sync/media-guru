@@ -34,8 +34,19 @@
   <div class="border rounded show-info-video item">
     <div class="container mb-4 ">
       <br>
-      <h6>Дата релиза</h6>
-      <%= @video.release_date %></p>
+      <div class='container-watched'>
+        <div>
+          <h6>Дата публикации</h6>
+          <%= @video.created_at.strftime('%d %b %y %H:%M') %></p>
+        </div>
+        <div>
+          <% if WatchedVideo.watched_video_exist(@video.id, current_user).present? %>
+              <%= button_to 'Просмотрено', delete_from_watched_path(@video), method: :post, class: 'btn btn-danger btn-watched_videos table-btn' %>
+          <% else %>
+              <%= button_to 'Пометить просмотренным', add_to_watched_path(@video), method: :post, class: 'btn btn-outline-danger btn-watched_videos table-btn' %>
+          <% end %>
+        </div>
+      </div>
 
       <%= render partial: 'dropdown' %>
 
@@ -78,3 +89,24 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.getElementById('videoPlayer').addEventListener('ended', function() {
+    // отправить запрос на сервер, чтобы пометить видео как просмотренное полностью
+    fetch('/videos/' + videoId + '/mark_as_watched', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      }
+    }).then(response => {
+      if (response.ok) {
+        console.log('Видео помечено как просмотренное полностью');
+      } else {
+        console.error('Ошибка при пометке видео как просмотренного');
+      }
+    }).catch(error => {
+      console.error('Ошибка при отправке запроса:', error);
+    });
+  });
+</script>

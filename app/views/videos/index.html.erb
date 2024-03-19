@@ -3,13 +3,28 @@
     <br>
       <h1>Каталог</h1><br>
       <% if current_user&.admin? %>
-        <p class="nav-item active">
-          <%= link_to 'Добавить фильм', new_video_path, class: "btn btn-success text-white" %>
-        </p>
+        <div class="container-video-report">
+          <div class="nav-item active video-report">
+            <%= link_to 'Добавить видео', new_video_path, class: "btn btn-success text-white" %>
+          </div>
+          <div class="video-report">
+            <div class="btn-group report-video" role="group">
+              <%= link_to "Отчет по популярности видео", videos_popularity_report_path, class: "btn btn-outline-secondary" %>
+              <%= link_to ".pdf", 'videos/popularity_report.pdf', class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+          <div class="video-report">
+            <div class="btn-group report-video" role="group">
+              <%= link_to "Отчет по количеству материала в разрезе категорий", videos_count_report_path, class: "btn btn-outline-secondary" %>
+              <%= link_to ".pdf", 'videos/count_report.pdf', class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+        </div>
       <% end %>
       <% if @videos.empty? %>
-        <h2 class="text-center p-4">Нет фильмов</h2>
+        <h2 class="text-center p-4">Нет видео</h2>
       <% else %>
+        <%= render partial: "videos/filter" %>
         <% @videos.reverse.each_with_index do |video, index| %>
           <div class="card card-video">
             <div class="card-body">
@@ -61,7 +76,7 @@
                   </td>
                   <% if Favorite.favorite_exist(video.id, current_user).present? %>
                     <td class='table-button'>
-                      <%= button_to 'В избранных', delete_from_favorites_path(video), method: :post, class: 'btn btn-danger btn-favorites table-btn' %>
+                      <%= button_to 'В избранных', delete_from_videos_favorites_path(video), method: :post, class: 'btn btn-danger btn-favorites table-btn' %>
                     </td>
                   <% else %>
                     <td class='table-button'>

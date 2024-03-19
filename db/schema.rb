@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_18_220443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_activities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "action", null: false
+    t.datetime "login_time"
+    t.datetime "logout_time"
+    t.string "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_activities_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -122,7 +133,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
   create_table "videos", force: :cascade do |t|
     t.string "video_name", null: false
     t.text "video_description", null: false
-    t.date "release_date", null: false
     t.string "video_url", null: false
     t.string "picture_url", null: false
     t.datetime "created_at", null: false
@@ -132,12 +142,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
     t.integer "rating"
   end
 
+  create_table "watched_videos", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watched_videos_on_user_id"
+    t.index ["video_id"], name: "index_watched_videos_on_video_id"
+  end
+
   add_foreign_key "favorites", "users"
   add_foreign_key "favorites", "videos"
   add_foreign_key "marks", "users"
   add_foreign_key "marks", "videos"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "videos"
+  add_foreign_key "user_activities", "users"
   add_foreign_key "video_categories", "categories"
   add_foreign_key "video_categories", "videos"
   add_foreign_key "video_languages", "languages"
@@ -146,6 +166,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_100022) do
   add_foreign_key "video_speakers", "videos"
   add_foreign_key "video_tags", "tags"
   add_foreign_key "video_tags", "videos"
+  add_foreign_key "watched_videos", "users"
+  add_foreign_key "watched_videos", "videos"
   create_trigger("marks_after_insert_row_tr", :generated => true, :compatibility => 1).
       on("marks").
       after(:insert) do

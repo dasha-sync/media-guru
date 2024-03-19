@@ -1,0 +1,6 @@
+<%= form_with url: videos_path, method: :get do |f| %>
+  <div class="input-group">
+    <%= f.text_field :search, class: "form-control", placeholder: "Поиск" %>
+    <%= f.submit "Поиск", class: "btn btn-outline-secondary search" %>
+  </div>
+<% end %>
